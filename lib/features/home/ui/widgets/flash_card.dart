@@ -4,7 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlashCard extends StatelessWidget {
-  const FlashCard({super.key});
+  const FlashCard({
+    super.key,
+    required this.question,
+    required this.answer,
+    required this.hint,
+    required this.id,
+  });
+
+  final String id;
+  final String question;
+  final String answer;
+  final String hint;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +27,7 @@ class FlashCard extends StatelessWidget {
 
       front: Container(
         width: double.infinity,
-        height: 250.h,
+        height: 200.h,
         decoration: BoxDecoration(
           color: AppColors.oceanBlue,
           borderRadius: BorderRadius.circular(24.r),
@@ -36,7 +47,7 @@ class FlashCard extends StatelessWidget {
 
       back: Container(
         width: double.infinity,
-        height: 250.h,
+        height: 200.h,
         decoration: BoxDecoration(
           color: AppColors.oceanBlue,
           borderRadius: BorderRadius.circular(24.r),

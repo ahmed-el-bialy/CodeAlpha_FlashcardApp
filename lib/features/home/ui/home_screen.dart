@@ -62,7 +62,8 @@ class HomeScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.symmetric(vertical: 8.h),
-                        child: FlashCard(),
+                        child: FlashCard(
+                          question: '', answer: '', hint: '', id: '',),
                       );
                     }),
               ),
