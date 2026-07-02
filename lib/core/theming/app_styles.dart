@@ -11,4 +11,10 @@ class AppStyles {
     fontFamily: "Manrope",
     color: AppColors.indigoAccent,
   );
+  static TextStyle font24BoldIceBlueManrope = TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.bold,
+    fontFamily: "Manrope",
+    color: AppColors.iceBlue,
+  );
 }
