@@ -12,7 +12,8 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             title: Text(
-                "Revio", style: TextStyle(color: AppColors.indigoAccent,)),
+                "Revio", style: TextStyle(
+                color: AppColors.indigoAccent, fontFamily: "Manrope")),
             backgroundColor: AppColors.darkBackground,
 
           )
