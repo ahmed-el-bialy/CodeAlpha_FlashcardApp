@@ -1,5 +1,7 @@
+import 'package:code_alpha_flash_card_app/core/helpers/spacing.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
+import 'package:code_alpha_flash_card_app/features/home/ui/widgets/categories_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,6 +31,11 @@ class HomeScreen extends StatelessWidget {
                 "Manage and organize your study sets efficiently. Choose a set to start or create a new one.",
                 style: AppStyles.font16LavenderGray,),
             ),
+
+            sliverVerticalSpacing(10),
+
+            CategoriesList(),
+
           ],
         ),
       )),
