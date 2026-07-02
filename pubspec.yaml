@@ -42,6 +42,9 @@ dependencies:
   rename: ^3.1.0
   # A flutter plugin for adapting screen and font size.Guaranteed to look good on different model.
   flutter_screenutil: ^5.9.3
+  #  A component that provides flip card animation. It could be used for hide and show details of a product.
+  flip_card: ^0.7.0
+
 
 dev_dependencies:
   flutter_test:
