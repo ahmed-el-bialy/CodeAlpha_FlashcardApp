@@ -17,4 +17,8 @@ class AppStyles {
     fontFamily: "Manrope",
     color: AppColors.iceBlue,
   );
+  static TextStyle font16LavenderGray = TextStyle(
+    fontSize: 16.sp,
+    color: AppColors.lavenderGray,
+  );
 }

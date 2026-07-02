@@ -24,7 +24,11 @@ class HomeScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: Text(
                 "Card Library", style: AppStyles.font24BoldIceBlueManrope,),
-            )
+            ), SliverToBoxAdapter(
+              child: Text(
+                "Manage and organize your study sets efficiently. Choose a set to start or create a new one.",
+                style: AppStyles.font16LavenderGray,),
+            ),
           ],
         ),
       )),
