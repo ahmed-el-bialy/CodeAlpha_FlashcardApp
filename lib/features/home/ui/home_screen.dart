@@ -8,7 +8,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
-      body: SafeArea(child: CustomScrollView()),
+      body: SafeArea(child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: Text(
+                "Revio", style: TextStyle(color: AppColors.indigoAccent,)),
+            backgroundColor: AppColors.darkBackground,
+
+          )
+        ],
+      )),
     );
   }
 }
