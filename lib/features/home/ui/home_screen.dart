@@ -2,6 +2,7 @@ import 'package:code_alpha_flash_card_app/core/helpers/spacing.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/categories_list.dart';
+import 'package:code_alpha_flash_card_app/features/home/ui/widgets/flash_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,33 +13,66 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
-      body: SafeArea(child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w),
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              title: Text(
-                  "Revio", style: AppStyles.font24BoldIndigoAccentManrope),
-              backgroundColor: AppColors.darkBackground,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
+          child: CustomScrollView(
+            slivers: [
 
-            ),
+              SliverAppBar(
+                title: Text(
+                  "Revio",
+                  style: AppStyles.font24BoldIndigoAccentManrope,
+                ),
+                backgroundColor: AppColors.darkBackground,
+                floating: true,
+              ),
 
-            SliverToBoxAdapter(
-              child: Text(
-                "Card Library", style: AppStyles.font24BoldIceBlueManrope,),
-            ), SliverToBoxAdapter(
-              child: Text(
-                "Manage and organize your study sets efficiently. Choose a set to start or create a new one.",
-                style: AppStyles.font16LavenderGray,),
-            ),
 
-            sliverVerticalSpacing(10),
+              SliverToBoxAdapter(
+                child: Text(
+                  "Card Library",
+                  style: AppStyles.font24BoldIceBlueManrope,
+                ),
+              ),
 
-            CategoriesList(),
+              sliverVerticalSpacing(4),
 
-          ],
+
+              SliverToBoxAdapter(
+                child: Text(
+                  "Manage and organize your study sets efficiently. Choose a set to start or create a new one.",
+                  style: AppStyles.font16LavenderGray,
+                ),
+              ),
+
+              sliverVerticalSpacing(16),
+
+
+              const CategoriesList(),
+
+              sliverVerticalSpacing(20),
+
+
+              SliverToBoxAdapter(
+                child: ListView.builder(
+                    itemCount: 10,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        child: FlashCard(),
+                      );
+                    }),
+              ),
+
+              sliverVerticalSpacing(20),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
+
