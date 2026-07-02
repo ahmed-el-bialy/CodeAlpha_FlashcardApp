@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppColors.darkBackground,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.w),
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: CustomScrollView(
             slivers: [
 
@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),
                         child: FlashCard(
                           question: '', answer: '', hint: '', id: '', category: '',),
                       );
