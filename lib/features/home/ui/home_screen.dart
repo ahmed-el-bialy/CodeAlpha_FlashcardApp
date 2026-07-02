@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                       return Padding(
                         padding: EdgeInsets.symmetric(vertical: 8.h),
                         child: FlashCard(
-                          question: '', answer: '', hint: '', id: '',),
+                          question: '', answer: '', hint: '', id: '', category: '',),
                       );
                     }),
               ),
