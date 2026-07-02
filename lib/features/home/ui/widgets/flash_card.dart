@@ -9,10 +9,11 @@ class FlashCard extends StatelessWidget {
     required this.question,
     required this.answer,
     required this.hint,
-    required this.id,
+    required this.id, required this.category,
   });
 
   final String id;
+  final String category;
   final String question;
   final String answer;
   final String hint;
