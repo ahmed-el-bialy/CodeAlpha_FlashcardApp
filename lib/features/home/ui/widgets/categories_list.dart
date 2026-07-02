@@ -10,6 +10,7 @@ class CategoriesList extends StatefulWidget {
 }
 
 class _CategoriesListState extends State<CategoriesList> {
+  final categories = ["All", "Programming", "Medical", "Languages", "+"];
   int itemIndex = 0;
 
   @override
@@ -18,13 +19,12 @@ class _CategoriesListState extends State<CategoriesList> {
       child: SizedBox(
         height: 30.h,
         child: ListView.builder(
-          itemCount: 4,
+          itemCount: categories.length,
 
           scrollDirection: Axis.horizontal,
 
           padding: EdgeInsets.symmetric(horizontal: 4.w),
           itemBuilder: (context, index) {
-            final categories = ["All", "Programming", "Medical", "Languages"];
 
             bool isSelected = index == itemIndex;
 
