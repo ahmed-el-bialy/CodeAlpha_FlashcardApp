@@ -1,22 +1,13 @@
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
+import 'package:code_alpha_flash_card_app/features/home/data/models/card_model.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlashCard extends StatelessWidget {
-  const FlashCard({
-    super.key,
-    required this.question,
-    required this.answer,
-    required this.hint,
-    required this.id, required this.category,
-  });
+  const FlashCard({super.key, required this.cardModel});
 
-  final String id;
-  final String category;
-  final String question;
-  final String answer;
-  final String hint;
+  final CardModel? cardModel;
 
   @override
   Widget build(BuildContext context) {

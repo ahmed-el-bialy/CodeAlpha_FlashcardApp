@@ -18,7 +18,6 @@ class HomeScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: CustomScrollView(
             slivers: [
-
               SliverAppBar(
                 title: Text(
                   "Revio",
@@ -34,17 +33,16 @@ class HomeScreen extends StatelessWidget {
                     splashColor: AppColors.oceanBlue,
                     style: IconButton.styleFrom(
                       backgroundColor: AppColors.oceanBlue.withValues(
-                          alpha: 0.9),
+                        alpha: 0.9,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                     ),
                     tooltip: 'Add New Card',
-                  )
-
+                  ),
                 ],
               ),
-
 
               SliverToBoxAdapter(
                 child: Text(
@@ -55,7 +53,6 @@ class HomeScreen extends StatelessWidget {
 
               sliverVerticalSpacing(4),
 
-
               SliverToBoxAdapter(
                 child: Text(
                   "Manage and organize your study sets efficiently. Choose a set to start or create a new one.",
@@ -65,24 +62,25 @@ class HomeScreen extends StatelessWidget {
 
               sliverVerticalSpacing(16),
 
-
               const CategoriesList(),
 
               sliverVerticalSpacing(20),
 
-
               SliverToBoxAdapter(
                 child: ListView.builder(
-                    itemCount: 10,
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),
-                        child: FlashCard(
-                          question: '', answer: '', hint: '', id: '', category: '',),
-                      );
-                    }),
+                  itemCount: 10,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8.h,
+                        horizontal: 8.w,
+                      ),
+                      child: FlashCard(cardModel: null),
+                    );
+                  },
+                ),
               ),
 
               sliverVerticalSpacing(20),
@@ -93,4 +91,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
