@@ -10,7 +10,7 @@ class AppRouter {
       case AppConstants.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case AppConstants.newCardScreen:
-        return MaterialPageRoute(builder: (_) => const AddNewCardScreen());
+        return MaterialPageRoute(builder: (_) => const AddCardScreen());
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }
