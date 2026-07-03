@@ -15,7 +15,6 @@ class NavigationItem extends StatelessWidget {
     required this.index,
     required this.activeIndex,
     required this.icon,
-
     required this.onTap,
   });
 

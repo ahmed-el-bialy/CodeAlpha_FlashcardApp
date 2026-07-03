@@ -1,3 +1,4 @@
+import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,12 +28,14 @@ class AppTextForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      style: textStyle ?? TextStyle(color: Colors.white),
+      style:
+          textStyle ??
+          AppStyles.font24BoldIceBlueManrope.copyWith(fontSize: 15.sp),
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hint,
         hintStyle:
-            hintStyle ?? TextStyle(color: Colors.white.withValues(alpha: 0.3)),
+            hintStyle ?? AppStyles.font16LavenderGray.copyWith(fontSize: 13.sp),
         fillColor: fillColor ?? Colors.white.withValues(alpha: 0.05),
         filled: true,
         border: OutlineInputBorder(
