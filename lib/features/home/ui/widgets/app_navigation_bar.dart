@@ -63,7 +63,9 @@ class AppNavigationBar extends StatelessWidget {
                       icon: Icons.add_circle,
 
                       onTap: () {
+                        if (activeIndex != 1) {
                         context.pushNamed(AppConstants.newCardScreen, null);
+                        }
                       },
                     ),
                     NavigationItem(
