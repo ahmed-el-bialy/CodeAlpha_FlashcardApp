@@ -2,12 +2,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/models/card_model.dart';
-import '../../data/repo/add_card_repo.dart';
+import '../../data/repo/cards_repo.dart';
 
 import 'add_card_state.dart';
 
 class AddCardCubit extends Cubit<AddCardState> {
-  final AddCardRepository _addCardRepository;
+  final CardsRepo _addCardRepository;
 
   AddCardCubit(this._addCardRepository) : super(AddCardInitial());
 

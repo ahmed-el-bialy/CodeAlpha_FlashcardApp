@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/repo/add_card_repo.dart';
+import '../../data/repo/cards_repo.dart';
 import 'delete_card_state.dart';
 
 class DeleteCardCubit extends Cubit<DeleteCardState> {
-  final AddCardRepository _repository;
+  final CardsRepo _repository;
 
   DeleteCardCubit(this._repository) : super(DeleteCardInitial());
 
