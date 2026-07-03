@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/helpers/routing_extension.dart';
 import '../../../../core/theming/app_colors.dart';
 import 'navigation_item.dart';
 
@@ -55,7 +57,7 @@ class AppNavigationBar extends StatelessWidget {
                       splashAlpha: .3,
                       onTap: () {
                         if (activeIndex != 0) {
-                          // context.pushReplacementNamed(AppConstants.homeScreen, null);
+                          context.pushReplacementNamed(AppConstants.homeScreen, null);
                         }
                       },
                     ),
@@ -65,7 +67,7 @@ class AppNavigationBar extends StatelessWidget {
                       icon: Icons.add_circle,
                       splashAlpha: .4,
                       onTap: () {
-                        // context.pushNamed(AppConstants.createNewCardScreen, null);
+                        context.pushNamed(AppConstants.newCardScreen, null);
                       },
                     ),
                     NavigationItem(
