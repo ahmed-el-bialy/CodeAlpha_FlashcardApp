@@ -21,11 +21,7 @@ class AppNavigationBar extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25.r),
           boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.25),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
-            ),
+
           ],
         ),
         child: ClipRRect(
@@ -36,9 +32,9 @@ class AppNavigationBar extends StatelessWidget {
               height: 64.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25.r),
-                color: AppColors.darkBackground.withValues(alpha: 0.5),
+                color: AppColors.indigoAccent.withValues(alpha: 0.12),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.07),
+                  color: AppColors.iceBlue.withValues(alpha: 0.07),
                   width: 1,
                 ),
               ),
@@ -54,7 +50,7 @@ class AppNavigationBar extends StatelessWidget {
                       index: 0,
                       activeIndex: activeIndex,
                       icon: Icons.home_rounded,
-                      splashAlpha: .3,
+
                       onTap: () {
                         if (activeIndex != 0) {
                           context.pushReplacementNamed(AppConstants.homeScreen, null);
@@ -65,7 +61,7 @@ class AppNavigationBar extends StatelessWidget {
                       index: 1,
                       activeIndex: activeIndex,
                       icon: Icons.add_circle,
-                      splashAlpha: .4,
+
                       onTap: () {
                         context.pushNamed(AppConstants.newCardScreen, null);
                       },
@@ -74,7 +70,7 @@ class AppNavigationBar extends StatelessWidget {
                       index: 2,
                       activeIndex: activeIndex,
                       icon: Icons.quiz_rounded,
-                      splashAlpha: .3,
+
                       onTap: () {
                         if (activeIndex != 2) {
                           // context.pushReplacementNamed(AppConstants.quizScreen, null);

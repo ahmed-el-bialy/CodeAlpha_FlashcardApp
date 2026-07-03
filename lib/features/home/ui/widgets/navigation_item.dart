@@ -7,7 +7,7 @@ class NavigationItem extends StatelessWidget {
   final int index;
   final int activeIndex;
   final IconData icon;
-  final double splashAlpha;
+
   final VoidCallback onTap;
 
   const NavigationItem({
@@ -15,7 +15,7 @@ class NavigationItem extends StatelessWidget {
     required this.index,
     required this.activeIndex,
     required this.icon,
-    required this.splashAlpha,
+
     required this.onTap,
   });
 
@@ -24,7 +24,7 @@ class NavigationItem extends StatelessWidget {
     final bool isActive = activeIndex == index;
 
     return InkWell(
-      splashColor: AppColors.accentCyan.withValues(alpha: splashAlpha),
+      splashColor: AppColors.accentCyan.withValues(alpha: .35),
       borderRadius: BorderRadius.circular(16.r),
       onTap: onTap,
       child: Padding(
