@@ -61,7 +61,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
   #A build system for Dart code generation and modular compilation.
-  build_runner: ^2.15.0
+  build_runner: ^2.4.9
   #  Extension for Hive. Automatically generates TypeAdapters to store any class.
   hive_generator: ^2.0.1
 
