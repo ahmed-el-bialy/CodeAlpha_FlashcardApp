@@ -48,6 +48,8 @@ dependencies:
   hive: ^2.2.3
   #  Extension for Hive. Makes it easier to use Hive in Flutter apps.
   hive_flutter: ^1.1.0
+  # Flutter widgets that make it easy to implement the Bloc (Business Logic Component) design pattern.
+  flutter_bloc: ^9.1.1
 
 
 dev_dependencies:
