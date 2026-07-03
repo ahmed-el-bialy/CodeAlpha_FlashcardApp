@@ -1,6 +1,9 @@
+import 'package:code_alpha_flash_card_app/features/add_new_card/data/repo/cards_repo.dart';
+import 'package:code_alpha_flash_card_app/features/add_new_card/logic/add_card/add_card_cubit.dart';
 import 'package:code_alpha_flash_card_app/features/add_new_card/ui/add_new_card_screen.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../constants/app_constants.dart';
 
@@ -10,7 +13,11 @@ class AppRouter {
       case AppConstants.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case AppConstants.newCardScreen:
-        return MaterialPageRoute(builder: (_) => const AddCardScreen());
+        return MaterialPageRoute(builder: (_) =>
+            BlocProvider(
+              create: (context) => AddCardCubit(CardsRepo()),
+              child: AddCardScreen(),
+            ));
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }
