@@ -1,5 +1,5 @@
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
-import 'package:code_alpha_flash_card_app/features/home/data/models/card_model.dart';
+import 'package:code_alpha_flash_card_app/core/models/card_model.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

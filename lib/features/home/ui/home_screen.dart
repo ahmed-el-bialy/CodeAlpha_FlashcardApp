@@ -2,7 +2,6 @@ import 'package:code_alpha_flash_card_app/core/helpers/spacing.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/app_navigation_bar.dart';
-import 'package:code_alpha_flash_card_app/features/home/ui/widgets/categories_list.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/flash_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,11 +44,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-            sliverVerticalSpacing(16),
-
-            const CategoriesList(),
-
-            sliverVerticalSpacing(20),
+            sliverVerticalSpacing(15),
 
             SliverToBoxAdapter(
               child: ListView.builder(
@@ -73,7 +68,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
 
-      bottomNavigationBar: AppNavigationBar(activeIndex: 0,),
+      bottomNavigationBar: AppNavigationBar(activeIndex: 0),
     );
   }
 }
