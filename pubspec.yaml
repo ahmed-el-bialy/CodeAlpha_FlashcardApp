@@ -45,9 +45,9 @@ dependencies:
   #  A component that provides flip card animation. It could be used for hide and show details of a product.
   flip_card: ^0.7.0
   #  Lightweight and blazing fast key-value database written in pure Dart.
-  hive: ^2.2.3
+  hive_ce: ^2.0.0
   #  Extension for Hive. Makes it easier to use Hive in Flutter apps.
-  hive_flutter: ^1.1.0
+  hive_ce_flutter: ^2.3.4
   # Flutter widgets that make it easy to implement the Bloc (Business Logic Component) design pattern.
   flutter_bloc: ^9.1.1
 
@@ -63,9 +63,9 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
   #A build system for Dart code generation and modular compilation.
-  build_runner: ^2.4.9
+  build_runner: ^2.15.0
   #  Extension for Hive. Automatically generates TypeAdapters to store any class.
-  hive_generator: ^2.0.1
+  hive_ce_generator: ^1.11.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
