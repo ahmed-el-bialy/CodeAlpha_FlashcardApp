@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive_ce.dart';
 
 import '../../../../core/models/card_model.dart';
 
@@ -6,7 +6,6 @@ class CardsRepo {
   static const String _boxName = 'flash_cards_box';
 
   Future<void> saveCard(CardModel card) async {
-
     final box = await Hive.openBox<CardModel>(_boxName);
     await box.put(card.id, card);
   }
