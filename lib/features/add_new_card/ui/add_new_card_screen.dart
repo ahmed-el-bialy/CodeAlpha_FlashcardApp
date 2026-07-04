@@ -1,4 +1,5 @@
 import 'package:code_alpha_flash_card_app/features/add_new_card/ui/widgets/app_text_form.dart';
+import 'package:code_alpha_flash_card_app/features/add_new_card/ui/widgets/appbar_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,72 +43,13 @@ class _AddCardScreenState extends State<AddCardScreen> {
           elevation: 0,
           scrolledUnderElevation: 0,
           automaticallyImplyLeading: false,
-          leadingWidth: 80.w,
-          leading: Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: EdgeInsets.only(left: 16.w),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  minimumSize: Size.zero,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
-                onPressed: () {
-                  if (_questionController.text.isNotEmpty ||
-                      _hintController.text.isNotEmpty ||
-                      _answerController.text.isNotEmpty) {
-                    FocusScope.of(context).unfocus();
-                  }
-                  Navigator.maybePop(context);
-                },
-                child: Text(
-                  "Cancel",
-                  style: AppStyles.font16LavenderGray.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          title: Text(
-            "New Card",
-            style: AppStyles.font24BoldIndigoAccentManrope.copyWith(
-                fontSize: 18.sp),
-          ),
-          centerTitle: true,
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(right: 16.w),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(12.r),
-                onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    // TODO: Save data to Cubit
-                  }
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 14.w, vertical: 6.h),
-                  decoration: BoxDecoration(
-                    color: AppColors.indigoAccent.withValues(alpha: 0.15),
-                    borderRadius: BorderRadius.circular(12.r),
-                    border: Border.all(
-                      color: AppColors.indigoAccent.withValues(alpha: 0.3),
-                      width: 1,
-                    ),
-                  ),
-                  child: Text(
-                    "Save",
-                    style: AppStyles.font24BoldIndigoAccentManrope.copyWith(
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          title: AppbarBody(
+            questionController: _questionController,
+            hintController: _hintController,
+            answerController: _answerController,
+            formKey: _formKey,
+          ),),
+
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
