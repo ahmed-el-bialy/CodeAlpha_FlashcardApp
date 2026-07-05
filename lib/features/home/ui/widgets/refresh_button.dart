@@ -6,9 +6,7 @@ import '../../../../core/theming/app_colors.dart';
 import '../../logic/get_all_cards_cubit.dart';
 
 class RefreshButton extends StatelessWidget {
-  const RefreshButton({
-    super.key,
-  });
+  const RefreshButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,28 +18,26 @@ class RefreshButton extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: const Text(
-                "Library updated successfully! ",
-                style: TextStyle(color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                "Library updated successfully! ✅",
+                style: TextStyle(
+                  color: AppColors.indigoAccent,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              backgroundColor: AppColors.lavenderGray.withValues(
-                  alpha:
-                  0.2),
-
+              backgroundColor: AppColors.indigoAccent.withValues(alpha: 0.2),
               duration: const Duration(seconds: 2),
-
               behavior: SnackBarBehavior.floating,
-
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(12.r),
+              ),
             ),
           );
         }
       },
-      icon:  Icon(
-        Icons.refresh,
+      icon: Icon(
+        Icons.refresh_rounded,
         color: AppColors.lavenderGray,
-        size: 30.sp,
+        size: 26.sp,
       ),
     );
   }
