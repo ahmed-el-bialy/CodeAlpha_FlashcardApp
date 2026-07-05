@@ -1,5 +1,5 @@
-import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/models/card_model.dart';
+import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,12 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class FlashCard extends StatelessWidget {
   const FlashCard({super.key, required this.cardModel});
 
-  final CardModel? cardModel;
+  final CardModel cardModel;
 
   @override
   Widget build(BuildContext context) {
     return FlipCard(
-      key: const ValueKey('home_flashcard_preview_key'),
+      key: ValueKey('flashcard_${cardModel.id}'),
       direction: FlipDirection.HORIZONTAL,
       side: CardSide.FRONT,
       speed: 400,
@@ -26,9 +26,9 @@ class FlashCard extends StatelessWidget {
         ),
         alignment: Alignment.center,
         padding: EdgeInsets.all(16.w),
-        child: const Text(
-          "What is Clean Architecture?",
-          style: TextStyle(
+        child: Text(
+          cardModel.front,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -47,10 +47,12 @@ class FlashCard extends StatelessWidget {
         ),
         alignment: Alignment.center,
         padding: EdgeInsets.all(16.w),
-        child: const Text(
-          "An architectural pattern that isolates the core business logic from the UI, database, and external frameworks.",
-
-          style: TextStyle(color: Colors.white, fontSize: 18),
+        child: Text(
+          cardModel.back,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+          ),
           textAlign: TextAlign.center,
         ),
       ),
