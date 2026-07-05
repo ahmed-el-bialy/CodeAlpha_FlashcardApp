@@ -4,15 +4,26 @@ import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_cubit.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_state.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/app_navigation_bar.dart';
-import 'package:code_alpha_flash_card_app/features/home/ui/widgets/flash_card.dart';
+import 'package:code_alpha_flash_card_app/features/home/ui/widgets/cards_list_builder.dart';
+import 'package:code_alpha_flash_card_app/features/home/ui/widgets/cards_number_container.dart';
+import 'package:code_alpha_flash_card_app/features/home/ui/widgets/refresh_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'widgets/refresh_button.dart';
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<GetAllCardsCubit>().fetchAllCards();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +31,7 @@ class HomeScreen extends StatelessWidget {
       extendBody: true,
       backgroundColor: AppColors.darkBackground,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: 12.w),
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
@@ -31,129 +42,41 @@ class HomeScreen extends StatelessWidget {
               ),
               backgroundColor: AppColors.darkBackground,
               floating: true,
-              actions: [
+              actions: const [
                 RefreshButton(),
               ],
             ),
-
             SliverToBoxAdapter(
               child: Text(
                 "Card Library",
                 style: AppStyles.font24BoldIceBlueManrope,
               ),
             ),
-
-            sliverVerticalSpacing(4),
-
+            sliverVerticalSpacing(6),
             SliverToBoxAdapter(
               child: Text(
                 "Manage and organize your study sets efficiently. Choose a set to start or create a new one.",
                 style: AppStyles.font16LavenderGray,
               ),
             ),
+            sliverVerticalSpacing(20),
 
-            sliverVerticalSpacing(15),
-
-            SliverToBoxAdapter(
-              child: Container(
-                  height: 100.h,
-                  width: MediaQuery.of(context).size.width * .8,
-
-                  constraints: BoxConstraints(minWidth: 60.w),
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 12.w, vertical: 6.h),
-                  decoration: BoxDecoration(
-                    color: AppColors.indigoAccent.withValues(alpha: 0.15),
-                    borderRadius: BorderRadius.circular(12.r),
-                    border: Border.all(
-                      color: AppColors.indigoAccent.withValues(alpha: 0.3),
-                      width: 1,
-                    ),
-                  ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 8.h,
-                        horizontal: 6.w,
-                      ),
-                      child: ClipRRect(
-                        child: Image.asset("assets/images/Container.png"),
-                      ),
-                    ),
-                  ],
-                ),
-              ),),
-
-            sliverVerticalSpacing(15),
 
             BlocBuilder<GetAllCardsCubit, GetAllCardsState>(
+              buildWhen: (previous, current) => current is CardsLoadedSuccess,
               builder: (context, state) {
-                if (state is CardsLoading || state is CardsInitial) {
-                  return const SliverToBoxAdapter(
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
+                final totalCards = (state is CardsLoadedSuccess) ? state.cards
+                    .length : 0;
 
-                else if (state is CardsLoadedSuccess) {
-                  if (state.cards.isEmpty) {
-                    return const SliverToBoxAdapter(
-                      child: Center(
-                        child: Text(
-                          "No cards available yet.",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    );
-                  }
-
-
-                  return SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 8.h,
-                            horizontal: 8.w,
-                          ),
-                          child: FlashCard(cardModel: state.cards[index]),
-                        );
-                      },
-                      childCount: state.cards
-                          .length,
-                    ),
-                  );
-                }
-
-                else if (state is CardsError) {
-                  return SliverToBoxAdapter(
-                    child: Center(
-                      child: Text(
-                        "There was an error: ${state.errorMessage}",
-                        style: const TextStyle(color: Colors.red),
-                      ),
-                    ),
-                  );
-                }
-
-                else {
-                  return const SliverToBoxAdapter(
-                    child: Center(
-                      child: Text(
-                        "Something went wrong.",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  );
-                }
+                return CardsNumberContainer(totalCards: totalCards);
               },
             ),
 
             sliverVerticalSpacing(20),
+
+            CardsListBuilder(),
+
+            sliverVerticalSpacing(80),
           ],
         ),
       ),
@@ -161,4 +84,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
