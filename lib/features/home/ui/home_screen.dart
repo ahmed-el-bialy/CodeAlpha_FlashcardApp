@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
             ),
 
-            sliverVerticalSpacing(80),
+            sliverVerticalSpacing(15),
           ],
         ),
       ),
