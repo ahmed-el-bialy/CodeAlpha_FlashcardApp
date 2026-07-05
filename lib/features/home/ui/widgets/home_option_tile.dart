@@ -30,11 +30,11 @@ class HomeOptionTile extends StatelessWidget {
           width: double.infinity,
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
           decoration: BoxDecoration(
-            color: AppColors.indigoAccent.withValues(alpha: 0.03),
+            color: AppColors.indigoAccent.withValues(alpha: 0.07),
 
             borderRadius: BorderRadius.circular(16.r),
             border: Border.all(
-              color: AppColors.lavenderGray.withValues(alpha: 0.08),
+              color: AppColors.lavenderGray.withValues(alpha: 0.05),
               width: 1.w,
             ),
           ),
@@ -70,7 +70,7 @@ class HomeOptionTile extends StatelessWidget {
               ),
               Icon(
                 Icons.arrow_forward_ios_rounded,
-                color: AppColors.lavenderGray.withValues(alpha: 0.4),
+                color: AppColors.lavenderGray.withValues(alpha: 0.5),
                 size: 16.sp,
               ),
             ],

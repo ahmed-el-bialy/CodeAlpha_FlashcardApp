@@ -4,8 +4,8 @@ import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_cubit.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_state.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/app_navigation_bar.dart';
-import 'package:code_alpha_flash_card_app/features/home/ui/widgets/cards_list_builder.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/cards_number_container.dart';
+import 'package:code_alpha_flash_card_app/features/home/ui/widgets/home_option_tile.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/refresh_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,8 +81,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-
-            CardsListBuilder(),
+            SliverToBoxAdapter(
+              child: HomeOptionTile(
+                imagePath: "assets/images/book.png",
+                title: "Study Cards",
+                subtitle: "Review your flashcards",
+                onTap: () {},
+              ),
+            ),
 
             sliverVerticalSpacing(80),
           ],
