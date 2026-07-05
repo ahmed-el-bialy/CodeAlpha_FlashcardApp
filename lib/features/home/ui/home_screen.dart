@@ -1,5 +1,3 @@
-import 'package:code_alpha_flash_card_app/core/constants/app_constants.dart';
-import 'package:code_alpha_flash_card_app/core/helpers/routing_extension.dart';
 import 'package:code_alpha_flash_card_app/core/helpers/spacing.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
@@ -33,14 +31,24 @@ class _HomeScreenState extends State<HomeScreen> {
       imagePath: "assets/images/manage.png",
       title: "Manage Cards",
       subtitle: "Edit or delete your cards",
-      onTap: () {},
+      onTap: () {
+        /// TODO: Navigate to Manage Screen
+      },
     ),
     NavigationModel(
       imagePath: "assets/images/add.png",
       title: "Add New Card",
       subtitle: "Create a new flashcard",
       onTap: () {
-        context.pushNamed(AppConstants.newCardScreen, null);
+        /// TODO: Navigate to Add Card Screen
+      },
+    ),
+    NavigationModel(
+      imagePath: "assets/images/Overlay.png",
+      title: "Quiz Yourself",
+      subtitle: "Test your knowledge",
+      onTap: () {
+        /// TODO: Navigate to Quiz Screen
       },
     ),
   ];
@@ -60,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
+            sliverVerticalSpacing(3),
             SliverAppBar(
               title: Text(
                 "Revio",
@@ -71,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 RefreshButton(),
               ],
             ),
+            sliverVerticalSpacing(5),
             SliverToBoxAdapter(
               child: Text(
                 "Card Library",
