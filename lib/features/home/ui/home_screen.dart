@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'widgets/refresh_button.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -29,6 +31,9 @@ class HomeScreen extends StatelessWidget {
               ),
               backgroundColor: AppColors.darkBackground,
               floating: true,
+              actions: [
+                RefreshButton(),
+              ],
             ),
 
             SliverToBoxAdapter(
@@ -121,3 +126,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
