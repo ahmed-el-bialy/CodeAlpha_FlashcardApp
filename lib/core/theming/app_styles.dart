@@ -21,4 +21,8 @@ class AppStyles {
     fontSize: 16.sp,
     color: AppColors.lavenderGray,
   );
+  static TextStyle font14Gray = TextStyle(
+    fontSize: 14.sp,
+    color: AppColors.gray,
+  );
 }
