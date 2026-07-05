@@ -54,6 +54,29 @@ class HomeScreen extends StatelessWidget {
 
             sliverVerticalSpacing(15),
 
+            SliverToBoxAdapter(
+              child: Container(
+                  height: 100.h,
+                  width: MediaQuery.of(context).size.width * .8,
+
+                  constraints: BoxConstraints(minWidth: 60.w),
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 12.w, vertical: 6.h),
+                  decoration: BoxDecoration(
+                    color: AppColors.indigoAccent.withValues(alpha: 0.15),
+                    borderRadius: BorderRadius.circular(12.r),
+                    border: Border.all(
+                      color: AppColors.indigoAccent.withValues(alpha: 0.3),
+                      width: 1,
+                    ),
+                  ),
+                  child: Row()
+              ),
+            ),
+
+
+            sliverVerticalSpacing(15),
             BlocBuilder<GetAllCardsCubit, GetAllCardsState>(
               builder: (context, state) {
                 if (state is CardsLoading || state is CardsInitial) {
