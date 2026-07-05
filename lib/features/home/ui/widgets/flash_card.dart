@@ -1,60 +1,110 @@
 import 'package:code_alpha_flash_card_app/core/models/card_model.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
+import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlashCard extends StatelessWidget {
-  const FlashCard({super.key, required this.cardModel});
-
   final CardModel cardModel;
+  final bool isForStudy;
+  final VoidCallback? onSpeakPressed;
+
+  const FlashCard({
+    super.key,
+    required this.cardModel,
+    this.isForStudy = true,
+    this.onSpeakPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final double cardHeight = isForStudy ? 240.h : 180.h;
+
     return FlipCard(
       key: ValueKey('flashcard_${cardModel.id}'),
       direction: FlipDirection.HORIZONTAL,
       side: CardSide.FRONT,
       speed: 400,
 
-      front: Container(
-        width: double.infinity,
-        height: 200.h,
-        decoration: BoxDecoration(
-          color: AppColors.oceanBlue,
-          borderRadius: BorderRadius.circular(24.r),
-        ),
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(16.w),
-        child: Text(
-          cardModel.front,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+      front: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            height: cardHeight,
+            decoration: BoxDecoration(
+              color: AppColors.oceanBlue,
+              borderRadius: BorderRadius.circular(24.r),
+            ),
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+            child: Text(
+              cardModel.front,
+              style: AppStyles.font24BoldIceBlueManrope.copyWith(
+                color: Colors.white,
+                fontSize: 20.sp,
+              ),
+              textAlign: TextAlign.center,
+            ),
           ),
-          textAlign: TextAlign.center,
-        ),
+          Positioned(
+            bottom: 12.h,
+            right: 12.w,
+            child: IconButton(
+              onPressed: onSpeakPressed ?? () {
+                /// TODO: Implement Speak functionality
+              },
+              icon: Icon(
+                CupertinoIcons.speaker_2_fill,
+                color: AppColors.lavenderGray.withValues(alpha: 0.6),
+                size: 22.sp,
+              ),
+            ),
+          ),
+        ],
       ),
 
-      back: Container(
-        width: double.infinity,
-        height: 200.h,
-        decoration: BoxDecoration(
-          color: AppColors.oceanBlue,
-          borderRadius: BorderRadius.circular(24.r),
-          border: Border.all(color: AppColors.accentCyan, width: 1.5),
-        ),
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(16.w),
-        child: Text(
-          cardModel.back,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
+      back: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            height: cardHeight,
+            decoration: BoxDecoration(
+              color: AppColors.oceanBlue,
+              borderRadius: BorderRadius.circular(24.r),
+              border: Border.all(
+                color: AppColors.accentCyan.withValues(alpha: 0.5),
+                width: 1.5,
+              ),
+            ),
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+            child: Text(
+              cardModel.back,
+              style: AppStyles.font16LavenderGray.copyWith(
+                color: Colors.white,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
           ),
-          textAlign: TextAlign.center,
-        ),
+          Positioned(
+            bottom: 12.h,
+            right: 12.w,
+            child: IconButton(
+              onPressed: onSpeakPressed ?? () {
+                /// TODO: Implement Speak functionality
+              },
+              icon: Icon(
+                CupertinoIcons.speaker_2_fill,
+                color: AppColors.accentCyan.withValues(alpha: 0.6),
+                size: 22.sp,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
