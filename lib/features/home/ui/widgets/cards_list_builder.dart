@@ -43,7 +43,10 @@ class CardsListBuilder extends StatelessWidget {
             delegate: SliverChildBuilderDelegate((context, index) {
               return Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.h),
-                child: FlashCard(cardModel: state.cards[index]),
+                child: FlashCard(
+                  cardModel: state.cards[index],
+                  isInQuiz: false,
+                ),
               );
             }, childCount: state.cards.length),
           );

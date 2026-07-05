@@ -8,16 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlashCard extends StatelessWidget {
   final CardModel cardModel;
+  final bool isInQuiz;
 
-
-  const FlashCard({
-    super.key,
-    required this.cardModel,
-
-  });
+  const FlashCard({super.key, required this.cardModel, required this.isInQuiz});
 
   @override
   Widget build(BuildContext context) {
+    final double cardHeight = 220.h;
+
     return FlipCard(
       key: ValueKey('flashcard_${cardModel.id}'),
       direction: FlipDirection.HORIZONTAL,
@@ -28,13 +26,13 @@ class FlashCard extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 240.h,
+            height: cardHeight,
             decoration: BoxDecoration(
               color: AppColors.oceanBlue,
               borderRadius: BorderRadius.circular(24.r),
             ),
             alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 44.h),
             child: Text(
               cardModel.front,
               style: AppStyles.font24BoldIceBlueManrope.copyWith(
@@ -44,12 +42,44 @@ class FlashCard extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
+
+          if (!isInQuiz) ...[
+            Positioned(
+              top: 8.h,
+              left: 8.w,
+              child: IconButton(
+                onPressed: () {
+                  /// TODO: Edit Card
+                },
+                icon: Icon(
+                  CupertinoIcons.pencil_circle_fill,
+                  color: AppColors.indigoAccent.withValues(alpha: 0.8),
+                  size: 28.sp,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 8.h,
+              right: 8.w,
+              child: IconButton(
+                onPressed: () {
+                  /// TODO: Delete Card
+                },
+                icon: Icon(
+                  CupertinoIcons.trash_circle_fill,
+                  color: Colors.redAccent.withValues(alpha: 0.8),
+                  size: 28.sp,
+                ),
+              ),
+            ),
+          ],
+
           Positioned(
             bottom: 12.h,
             right: 12.w,
             child: IconButton(
               onPressed: () {
-                /// TODO: Implement Speak functionality
+                /// TODO: Speak Card
               },
               icon: Icon(
                 CupertinoIcons.speaker_2_fill,
@@ -65,7 +95,7 @@ class FlashCard extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 240.h,
+            height: cardHeight,
             decoration: BoxDecoration(
               color: AppColors.oceanBlue,
               borderRadius: BorderRadius.circular(24.r),
@@ -75,7 +105,7 @@ class FlashCard extends StatelessWidget {
               ),
             ),
             alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 44.h),
             child: Text(
               cardModel.back,
               style: AppStyles.font16LavenderGray.copyWith(
@@ -86,12 +116,44 @@ class FlashCard extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
+
+          if (!isInQuiz) ...[
+            Positioned(
+              top: 8.h,
+              left: 8.w,
+              child: IconButton(
+                onPressed: () {
+                  /// TODO: Edit Card
+                },
+                icon: Icon(
+                  CupertinoIcons.pencil_circle_fill,
+                  color: AppColors.indigoAccent.withValues(alpha: 0.8),
+                  size: 26.sp,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 8.h,
+              right: 8.w,
+              child: IconButton(
+                onPressed: () {
+                  /// TODO: Delete Card
+                },
+                icon: Icon(
+                  CupertinoIcons.trash_circle_fill,
+                  color: Colors.redAccent.withValues(alpha: 0.8),
+                  size: 26.sp,
+                ),
+              ),
+            ),
+          ],
+
           Positioned(
             bottom: 12.h,
             right: 12.w,
             child: IconButton(
               onPressed: () {
-                /// TODO: Implement Speak functionality
+                ///  TODO: Speak Card
               },
               icon: Icon(
                 CupertinoIcons.speaker_2_fill,

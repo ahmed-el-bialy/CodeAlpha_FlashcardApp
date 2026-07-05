@@ -32,14 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     ),
     NavigationModel(
-      imagePath: "assets/images/manage.png",
-      title: "Manage Cards",
-      subtitle: "Edit or delete your cards",
-      onTap: () {
-        context.pushNamed(AppConstants.manageCards, null);
-      },
-    ),
-    NavigationModel(
       imagePath: "assets/images/add.png",
       title: "Add New Card",
       subtitle: "Create a new flashcard",
