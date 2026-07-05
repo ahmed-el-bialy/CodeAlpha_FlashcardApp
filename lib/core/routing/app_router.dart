@@ -14,22 +14,22 @@ class AppRouter {
   Route generateRoute(RouteSettings setting) {
     switch (setting.name) {
       case AppConstants.homeScreen:
-        return MaterialPageRoute(builder: (_) =>
-            BlocProvider(
-              create: (context) =>
-              GetAllCardsCubit(CardsRepo())
-                ..fetchAllCards(),
-              child: HomeScreen(),
-            ));
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => GetAllCardsCubit(CardsRepo())..fetchAllCards(),
+            child: HomeScreen(),
+          ),
+        );
       case AppConstants.newCardScreen:
-        return MaterialPageRoute(builder: (_) =>
-            BlocProvider(
-              create: (context) => AddCardCubit(CardsRepo()),
-              child: AddCardScreen(),
-            ));
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => AddCardCubit(CardsRepo()),
+            child: AddCardScreen(),
+          ),
+        );
 
       case AppConstants.studyCards:
-        return MaterialPageRoute(builder: (_) => StudyCardsScreen(),);
+        return MaterialPageRoute(builder: (_) => StudyCardsScreen());
 
       case AppConstants.manageCards:
         return MaterialPageRoute(builder: (_) => ManageCardsScreen());
