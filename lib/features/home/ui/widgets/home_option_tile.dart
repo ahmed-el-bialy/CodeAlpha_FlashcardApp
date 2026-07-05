@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_styles.dart';
-import '../../navigation_model.dart';
+import '../../models/navigation_model.dart';
 
 class HomeOptionTile extends StatelessWidget {
 

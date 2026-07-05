@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/home/logic/get_all_cards_cubit.dart';
+import '../../study_cards_screen.dart';
 import '../constants/app_constants.dart';
 
 class AppRouter {
@@ -25,6 +26,9 @@ class AppRouter {
               create: (context) => AddCardCubit(CardsRepo()),
               child: AddCardScreen(),
             ));
+      case AppConstants.studyCards:
+        return MaterialPageRoute(builder: (_) => StudyCardsScreen(),
+        );
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }

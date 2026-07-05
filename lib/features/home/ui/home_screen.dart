@@ -12,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/constants/app_constants.dart';
 import '../../../core/helpers/routing_extension.dart';
-import '../navigation_model.dart';
+import '../models/navigation_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,7 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
       imagePath: "assets/images/book.png",
       title: "Study Cards",
       subtitle: "Review your flashcards",
-      onTap: () {},
+      onTap: () {
+        context.pushNamed(AppConstants.studyCards, null);
+      },
     ),
     NavigationModel(
       imagePath: "assets/images/manage.png",
