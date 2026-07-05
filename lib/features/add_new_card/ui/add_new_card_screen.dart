@@ -38,17 +38,6 @@ class _AddCardScreenState extends State<AddCardScreen> {
       answerController: _answerController,
       child: Scaffold(
         backgroundColor: AppColors.darkBackground,
-        appBar: AppBar(
-          backgroundColor: AppColors.darkBackground,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          automaticallyImplyLeading: false,
-          title: AppbarBody(
-            questionController: _questionController,
-            hintController: _hintController,
-            answerController: _answerController,
-            formKey: _formKey,
-          ),),
 
         body: SafeArea(
           child: Padding(
@@ -58,6 +47,16 @@ class _AddCardScreenState extends State<AddCardScreen> {
               child: CustomScrollView(
                 physics: const BouncingScrollPhysics(),
                 slivers: [
+
+                  SliverToBoxAdapter(child: AppbarBody(
+                    questionController: _questionController,
+                    hintController: _hintController,
+                    answerController: _answerController,
+                    formKey: _formKey,
+                  ),),
+
+                  sliverVerticalSpacing(15),
+
                   SliverToBoxAdapter(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
