@@ -1,15 +1,18 @@
+import 'package:code_alpha_flash_card_app/core/constants/app_constants.dart';
+import 'package:code_alpha_flash_card_app/core/helpers/routing_extension.dart';
 import 'package:code_alpha_flash_card_app/core/helpers/spacing.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_cubit.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_state.dart';
-import 'package:code_alpha_flash_card_app/features/home/ui/widgets/app_navigation_bar.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/cards_number_container.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/home_option_tile.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/refresh_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../navigation_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,6 +22,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late final List<NavigationModel> models = [
+    NavigationModel(
+      imagePath: "assets/images/book.png",
+      title: "Study Cards",
+      subtitle: "Review your flashcards",
+      onTap: () {},
+    ),
+    NavigationModel(
+      imagePath: "assets/images/manage.png",
+      title: "Manage Cards",
+      subtitle: "Edit or delete your cards",
+      onTap: () {},
+    ),
+    NavigationModel(
+      imagePath: "assets/images/add.png",
+      title: "Add New Card",
+      subtitle: "Create a new flashcard",
+      onTap: () {
+        context.pushNamed(AppConstants.newCardScreen, null);
+      },
+    ),
+  ];
   @override
   void initState() {
     super.initState();
@@ -79,22 +104,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: AppStyles.font24BoldIceBlueManrope.copyWith(
                   fontSize: 17.sp,
                 ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: HomeOptionTile(
-                imagePath: "assets/images/book.png",
-                title: "Study Cards",
-                subtitle: "Review your flashcards",
-                onTap: () {},
-              ),
+              ),),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                  childCount: models.length, (context,
+                  index,) {
+                return HomeOptionTile(model: models[index]);
+              }),
             ),
 
             sliverVerticalSpacing(80),
           ],
         ),
       ),
-      bottomNavigationBar: AppNavigationBar(activeIndex: 0),
     );
   }
 }

@@ -4,19 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_styles.dart';
+import '../../navigation_model.dart';
 
 class HomeOptionTile extends StatelessWidget {
-  final String imagePath;
-  final String title;
-  final String subtitle;
-  final VoidCallback onTap;
 
+  final NavigationModel model;
   const HomeOptionTile({
-    super.key,
-    required this.imagePath,
-    required this.title,
-    required this.subtitle,
-    required this.onTap,
+    super.key, required this.model,
   });
 
   @override
@@ -24,7 +18,7 @@ class HomeOptionTile extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8.h),
       child: InkWell(
-        onTap: onTap,
+        onTap: model.onTap,
         borderRadius: BorderRadius.circular(16.r),
         child: Ink(
           width: double.infinity,
@@ -44,7 +38,7 @@ class HomeOptionTile extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(12.r),
                 child: Image.asset(
-                  imagePath,
+                  model.imagePath,
                   height: 48.h,
                   width: 48.w,
                   fit: BoxFit.cover,
@@ -56,10 +50,10 @@ class HomeOptionTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(title, style: AppStyles.font17WhiteBold),
+                    Text(model.title, style: AppStyles.font17WhiteBold),
                     verticalSpacing(4),
                     Text(
-                      subtitle,
+                      model.subtitle,
                       style: AppStyles.font14Gray.copyWith(
                         color: AppColors.lavenderGray.withValues(alpha: 0.6),
                         fontSize: 12.sp,
