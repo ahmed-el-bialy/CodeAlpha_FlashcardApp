@@ -8,20 +8,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlashCard extends StatelessWidget {
   final CardModel cardModel;
-  final bool isForStudy;
-  final VoidCallback? onSpeakPressed;
+
 
   const FlashCard({
     super.key,
     required this.cardModel,
-    this.isForStudy = true,
-    this.onSpeakPressed,
+
   });
 
   @override
   Widget build(BuildContext context) {
-    final double cardHeight = isForStudy ? 240.h : 180.h;
-
     return FlipCard(
       key: ValueKey('flashcard_${cardModel.id}'),
       direction: FlipDirection.HORIZONTAL,
@@ -32,7 +28,7 @@ class FlashCard extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: cardHeight,
+            height: 240.h,
             decoration: BoxDecoration(
               color: AppColors.oceanBlue,
               borderRadius: BorderRadius.circular(24.r),
@@ -52,7 +48,7 @@ class FlashCard extends StatelessWidget {
             bottom: 12.h,
             right: 12.w,
             child: IconButton(
-              onPressed: onSpeakPressed ?? () {
+              onPressed: () {
                 /// TODO: Implement Speak functionality
               },
               icon: Icon(
@@ -69,7 +65,7 @@ class FlashCard extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: cardHeight,
+            height: 240.h,
             decoration: BoxDecoration(
               color: AppColors.oceanBlue,
               borderRadius: BorderRadius.circular(24.r),
@@ -94,7 +90,7 @@ class FlashCard extends StatelessWidget {
             bottom: 12.h,
             right: 12.w,
             child: IconButton(
-              onPressed: onSpeakPressed ?? () {
+              onPressed: () {
                 /// TODO: Implement Speak functionality
               },
               icon: Icon(
