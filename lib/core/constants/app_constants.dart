@@ -2,4 +2,5 @@ class AppConstants {
   static const  String homeScreen= "/" ;
   static const  String newCardScreen= "/AddNewCardScreen" ;
   static const  String studyCards= "/StudyCards" ;
+  static const  String manageCards= "/ManageCards" ;
 }

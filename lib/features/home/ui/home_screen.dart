@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: "Manage Cards",
       subtitle: "Edit or delete your cards",
       onTap: () {
-        /// TODO: Navigate to Manage Screen
+        context.pushNamed(AppConstants.manageCards, null);
       },
     ),
     NavigationModel(
