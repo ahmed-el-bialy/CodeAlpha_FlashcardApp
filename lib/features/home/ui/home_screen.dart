@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/constants/app_constants.dart';
+import '../../../core/helpers/routing_extension.dart';
 import '../navigation_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,7 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
       title: "Add New Card",
       subtitle: "Create a new flashcard",
       onTap: () {
-        /// TODO: Navigate to Add Card Screen
+        context.pushNamed(AppConstants.newCardScreen, null);
+
       },
     ),
     NavigationModel(
