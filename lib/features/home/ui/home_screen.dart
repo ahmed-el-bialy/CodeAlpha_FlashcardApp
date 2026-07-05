@@ -73,6 +73,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             sliverVerticalSpacing(20),
+            SliverToBoxAdapter(
+              child: Text(
+                "What would you like to do?",
+                style: AppStyles.font24BoldIceBlueManrope.copyWith(
+                  fontSize: 17.sp,
+                ),
+              ),
+            ),
 
             CardsListBuilder(),
 

@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theming/app_colors.dart';
+import '../../../../core/theming/app_styles.dart';
+
+class HomeOptionTile extends StatelessWidget {
+  final String imagePath;
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  const HomeOptionTile({
+    super.key,
+    required this.imagePath,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 8.h),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16.r),
+        child: Ink(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          decoration: BoxDecoration(
+            color: AppColors.indigoAccent.withValues(alpha: 0.03),
+
+            borderRadius: BorderRadius.circular(16.r),
+            border: Border.all(
+              color: AppColors.lavenderGray.withValues(alpha: 0.08),
+              width: 1.w,
+            ),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12.r),
+                child: Image.asset(
+                  imagePath,
+                  height: 48.h,
+                  width: 48.w,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              horizontalSpacing(16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(title, style: AppStyles.font17WhiteBold),
+                    verticalSpacing(4),
+                    Text(
+                      subtitle,
+                      style: AppStyles.font14Gray.copyWith(
+                        color: AppColors.lavenderGray.withValues(alpha: 0.6),
+                        fontSize: 12.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: AppColors.lavenderGray.withValues(alpha: 0.4),
+                size: 16.sp,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

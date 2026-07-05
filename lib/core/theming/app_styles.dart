@@ -25,4 +25,8 @@ class AppStyles {
     fontSize: 14.sp,
     color: AppColors.gray,
   );
+  static TextStyle font17WhiteBold = TextStyle(
+    fontSize: 17.sp,
+    color: Colors.white,
+  );
 }
