@@ -71,12 +71,24 @@ class HomeScreen extends StatelessWidget {
                       width: 1,
                     ),
                   ),
-                  child: Row()
-              ),
-            ),
-
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8.h,
+                        horizontal: 6.w,
+                      ),
+                      child: ClipRRect(
+                        child: Image.asset("assets/images/Container.png"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),),
 
             sliverVerticalSpacing(15),
+
             BlocBuilder<GetAllCardsCubit, GetAllCardsState>(
               builder: (context, state) {
                 if (state is CardsLoading || state is CardsInitial) {
