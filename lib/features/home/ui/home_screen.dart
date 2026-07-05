@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     NavigationModel(
       imagePath: "assets/images/book.png",
       title: "Study Cards",
-      subtitle: "Review your flashcards",
+      subtitle: "Review or manage your flashcards",
       onTap: () {
         context.pushNamed(AppConstants.studyCards, null);
       },
