@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_ce_flutter/hive_ce_flutter.dart';
 
-import 'core/models/card_model.dart';
+import 'core/data/models/card_model.dart';
 import 'core/routing/app_router.dart';
 import 'hive_registrar.g.dart';
 

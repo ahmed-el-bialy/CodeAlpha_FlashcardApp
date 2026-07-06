@@ -1,4 +1,4 @@
-import 'package:code_alpha_flash_card_app/core/repo/cards_repo.dart';
+import 'package:code_alpha_flash_card_app/core/data/repo/cards_repo.dart';
 import 'package:code_alpha_flash_card_app/features/add_new_card/logic/add_card_cubit.dart';
 import 'package:code_alpha_flash_card_app/features/add_new_card/ui/add_new_card_screen.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/home_screen.dart';

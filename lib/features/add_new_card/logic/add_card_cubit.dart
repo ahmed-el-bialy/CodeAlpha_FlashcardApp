@@ -1,8 +1,8 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/models/card_model.dart';
-import '../../../core/repo/cards_repo.dart';
+import '../../../core/data/models/card_model.dart';
+import '../../../core/data/repo/cards_repo.dart';
 
 import 'add_card_state.dart';
 
