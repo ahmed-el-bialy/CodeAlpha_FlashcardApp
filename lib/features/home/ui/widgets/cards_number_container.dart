@@ -30,7 +30,7 @@ class CardsNumberContainer extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
               child: Image.asset(
-                "assets/images/Container.png",
+                "assets/images/container.png",
                 height: 56.h,
                 fit: BoxFit.contain,
               ),

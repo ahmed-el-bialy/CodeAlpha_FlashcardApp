@@ -1,6 +1,6 @@
 import 'package:hive_ce/hive_ce.dart';
 
-import '../../../../core/models/card_model.dart';
+import '../models/card_model.dart';
 
 class CardsRepo {
   static const String _boxName = 'flash_cards_box';

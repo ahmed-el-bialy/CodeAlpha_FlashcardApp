@@ -5,7 +5,7 @@ import 'package:code_alpha_flash_card_app/features/add_new_card/ui/widgets/app_t
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/helpers/spacing.dart';
+import '../../../../../../../core/helpers/spacing.dart';
 
 class EditCardBottomSheet extends StatefulWidget {
   final CardModel cardModel;

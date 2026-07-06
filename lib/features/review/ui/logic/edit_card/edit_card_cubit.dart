@@ -1,7 +1,7 @@
-import 'package:code_alpha_flash_card_app/features/add_new_card/data/repo/cards_repo.dart';
+import 'package:code_alpha_flash_card_app/core/repo/cards_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/models/card_model.dart';
+import '../../../../../core/models/card_model.dart';
 import 'edit_card_state.dart';
 
 class EditCardCubit extends Cubit<EditCardState> {

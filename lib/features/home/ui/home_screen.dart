@@ -1,11 +1,11 @@
 import 'package:code_alpha_flash_card_app/core/helpers/spacing.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
+import 'package:code_alpha_flash_card_app/core/widgets/refresh_button.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_cubit.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_state.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/cards_number_container.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/widgets/home_option_tile.dart';
-import 'package:code_alpha_flash_card_app/features/home/ui/widgets/refresh_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,11 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
       subtitle: "Create a new flashcard",
       onTap: () {
         context.pushNamed(AppConstants.newCardScreen, null);
-
       },
     ),
     NavigationModel(
-      imagePath: "assets/images/Overlay.png",
+      imagePath: "assets/images/quiz.png",
       title: "Quiz Yourself",
       subtitle: "Test your knowledge",
       onTap: () {
@@ -49,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     ),
   ];
+
   @override
   void initState() {
     super.initState();
@@ -73,9 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               backgroundColor: AppColors.darkBackground,
               floating: true,
-              actions: const [
-                RefreshButton(),
-              ],
+              actions: const [RefreshButton()],
             ),
             sliverVerticalSpacing(5),
             SliverToBoxAdapter(
@@ -93,12 +91,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             sliverVerticalSpacing(20),
 
-
             BlocBuilder<GetAllCardsCubit, GetAllCardsState>(
               buildWhen: (previous, current) => current is CardsLoadedSuccess,
               builder: (context, state) {
-                final totalCards = (state is CardsLoadedSuccess) ? state.cards
-                    .length : 0;
+                final totalCards = (state is CardsLoadedSuccess)
+                    ? state.cards.length
+                    : 0;
 
                 return CardsNumberContainer(totalCards: totalCards);
               },
@@ -111,11 +109,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: AppStyles.font24BoldIceBlueManrope.copyWith(
                   fontSize: 17.sp,
                 ),
-              ),),
+              ),
+            ),
             SliverList(
-              delegate: SliverChildBuilderDelegate(
-                  childCount: models.length, (context,
-                  index,) {
+              delegate: SliverChildBuilderDelegate(childCount: models.length, (
+                context,
+                index,
+              ) {
                 return HomeOptionTile(model: models[index]);
               }),
             ),

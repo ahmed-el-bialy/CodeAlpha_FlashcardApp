@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../add_new_card/logic/delete_card/delete_card_cubit.dart';
-import '../../../add_new_card/logic/edit_card/edit_card_cubit.dart';
-import '../../../edit_card_bottom_sheet.dart';
+import '../../features/review/ui/logic/delete_card/delete_card_cubit.dart';
+import '../../features/review/ui/logic/edit_card/edit_card_cubit.dart';
+import '../../features/review/ui/widgets/edit_card_bottom_sheet.dart';
 
 class CardFace extends StatelessWidget {
   const CardFace({

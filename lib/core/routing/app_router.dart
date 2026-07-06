@@ -1,14 +1,14 @@
-import 'package:code_alpha_flash_card_app/features/add_new_card/data/repo/cards_repo.dart';
-import 'package:code_alpha_flash_card_app/features/add_new_card/logic/add_card/add_card_cubit.dart';
+import 'package:code_alpha_flash_card_app/core/repo/cards_repo.dart';
+import 'package:code_alpha_flash_card_app/features/add_new_card/logic/add_card_cubit.dart';
 import 'package:code_alpha_flash_card_app/features/add_new_card/ui/add_new_card_screen.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/add_new_card/logic/delete_card/delete_card_cubit.dart';
-import '../../features/add_new_card/logic/edit_card/edit_card_cubit.dart';
+import '../../features/review/ui/logic/delete_card/delete_card_cubit.dart';
+import '../../features/review/ui/logic/edit_card/edit_card_cubit.dart';
 import '../../features/home/logic/get_all_cards_cubit.dart';
-import '../../study_cards_screen.dart';
+import '../../features/review/ui/review_cards_screen.dart';
 import '../constants/app_constants.dart';
 
 class AppRouter {
@@ -46,7 +46,7 @@ class AppRouter {
                     create: (context) => EditCardCubit(CardsRepo()),
                   ),
                 ],
-            child: const StudyCardsScreen(),
+            child: const ReviewCardsScreen(),
           ),
         );
 

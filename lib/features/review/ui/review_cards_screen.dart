@@ -1,20 +1,20 @@
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
+import 'package:code_alpha_flash_card_app/core/widgets/flash_card.dart';
+import 'package:code_alpha_flash_card_app/core/widgets/refresh_button.dart';
 import 'package:code_alpha_flash_card_app/features/home/logic/get_all_cards_cubit.dart';
-import 'package:code_alpha_flash_card_app/features/home/ui/widgets/flash_card.dart';
-import 'package:code_alpha_flash_card_app/features/home/ui/widgets/refresh_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'features/add_new_card/logic/delete_card/delete_card_cubit.dart';
-import 'features/add_new_card/logic/delete_card/delete_card_state.dart';
-import 'features/add_new_card/logic/edit_card/edit_card_cubit.dart';
-import 'features/add_new_card/logic/edit_card/edit_card_state.dart';
-import 'features/home/logic/get_all_cards_state.dart';
+import '../../home/logic/get_all_cards_state.dart';
+import 'logic/delete_card/delete_card_cubit.dart';
+import 'logic/delete_card/delete_card_state.dart';
+import 'logic/edit_card/edit_card_cubit.dart';
+import 'logic/edit_card/edit_card_state.dart';
 
-class StudyCardsScreen extends StatelessWidget {
-  const StudyCardsScreen({super.key});
+class ReviewCardsScreen extends StatelessWidget {
+  const ReviewCardsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,7 @@ class StudyCardsScreen extends StatelessWidget {
         ),
         centerTitle: true,
         iconTheme: const IconThemeData(color: AppColors.indigoAccent),
-        actions: const [
-          RefreshButton(),
-        ],
+        actions: const [RefreshButton()],
       ),
       body: SafeArea(
         child: MultiBlocListener(
@@ -54,7 +52,9 @@ class StudyCardsScreen extends StatelessWidget {
                       backgroundColor: Colors.green,
                       behavior: SnackBarBehavior.floating,
                       margin: EdgeInsets.symmetric(
-                          horizontal: 24.w, vertical: 16.h),
+                        horizontal: 24.w,
+                        vertical: 16.h,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
                       ),
@@ -73,7 +73,9 @@ class StudyCardsScreen extends StatelessWidget {
                       backgroundColor: Colors.redAccent,
                       behavior: SnackBarBehavior.floating,
                       margin: EdgeInsets.symmetric(
-                          horizontal: 24.w, vertical: 16.h),
+                        horizontal: 24.w,
+                        vertical: 16.h,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
                       ),
@@ -98,7 +100,9 @@ class StudyCardsScreen extends StatelessWidget {
                       backgroundColor: Colors.green,
                       behavior: SnackBarBehavior.floating,
                       margin: EdgeInsets.symmetric(
-                          horizontal: 24.w, vertical: 16.h),
+                        horizontal: 24.w,
+                        vertical: 16.h,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
                       ),
@@ -117,7 +121,9 @@ class StudyCardsScreen extends StatelessWidget {
                       backgroundColor: Colors.redAccent,
                       behavior: SnackBarBehavior.floating,
                       margin: EdgeInsets.symmetric(
-                          horizontal: 24.w, vertical: 16.h),
+                        horizontal: 24.w,
+                        vertical: 16.h,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
                       ),
@@ -132,7 +138,8 @@ class StudyCardsScreen extends StatelessWidget {
               if (state is CardsLoading) {
                 return const Center(
                   child: CircularProgressIndicator(
-                      color: AppColors.indigoAccent),
+                    color: AppColors.indigoAccent,
+                  ),
                 );
               }
 
@@ -159,10 +166,7 @@ class StudyCardsScreen extends StatelessWidget {
                         horizontal: 10.w,
                         vertical: 8.h,
                       ),
-                      child: FlashCard(
-                        cardModel: cardModel,
-                        isInQuiz: false,
-                      ),
+                      child: FlashCard(cardModel: cardModel, isInQuiz: false),
                     );
                   },
                 );

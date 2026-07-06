@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/helpers/spacing.dart';
 import '../../../core/theming/app_colors.dart';
 import '../../../core/theming/app_styles.dart';
-import '../../home/ui/widgets/app_navigation_bar.dart';
 import 'widgets/card_form_back_scope.dart';
 
 class AddCardScreen extends StatefulWidget {
@@ -118,7 +117,6 @@ class _AddCardScreenState extends State<AddCardScreen> {
             ),
           ),
         ),
-        bottomNavigationBar: AppNavigationBar(activeIndex: 1,),
       ),
     );
   }

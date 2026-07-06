@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../add_new_card/data/repo/cards_repo.dart';
+import '../../../core/repo/cards_repo.dart';
 import 'get_all_cards_state.dart';
 
 class GetAllCardsCubit extends Cubit<GetAllCardsState> {

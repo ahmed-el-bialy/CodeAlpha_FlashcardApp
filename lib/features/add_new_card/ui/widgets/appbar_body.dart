@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/models/card_model.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_styles.dart';
-import '../../logic/add_card/add_card_cubit.dart';
-import '../../logic/add_card/add_card_state.dart';
+import '../../logic/add_card_cubit.dart';
+import '../../logic/add_card_state.dart';
 
 class AppbarBody extends StatelessWidget {
   const AppbarBody({
