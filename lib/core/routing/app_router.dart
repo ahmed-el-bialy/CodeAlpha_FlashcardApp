@@ -5,6 +5,8 @@ import 'package:code_alpha_flash_card_app/features/home/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/add_new_card/logic/delete_card/delete_card_cubit.dart';
+import '../../features/add_new_card/logic/edit_card/edit_card_cubit.dart';
 import '../../features/home/logic/get_all_cards_cubit.dart';
 import '../../study_cards_screen.dart';
 import '../constants/app_constants.dart';
@@ -29,8 +31,21 @@ class AppRouter {
 
       case AppConstants.studyCards:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => GetAllCardsCubit(CardsRepo())..fetchAllCards(),
+          builder: (_) =>
+              MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) =>
+                    GetAllCardsCubit(CardsRepo())
+                      ..fetchAllCards(),
+                  ),
+                  BlocProvider(
+                    create: (context) => DeleteCardCubit(CardsRepo()),
+                  ),
+                  BlocProvider(
+                    create: (context) => EditCardCubit(CardsRepo()),
+                  ),
+                ],
             child: const StudyCardsScreen(),
           ),
         );
