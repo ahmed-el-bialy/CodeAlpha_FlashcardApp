@@ -28,7 +28,12 @@ class AppRouter {
         );
 
       case AppConstants.studyCards:
-        return MaterialPageRoute(builder: (_) => StudyCardsScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => GetAllCardsCubit(CardsRepo())..fetchAllCards(),
+            child: const StudyCardsScreen(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
