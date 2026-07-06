@@ -50,6 +50,8 @@ dependencies:
   hive_ce_flutter: ^2.3.4
   # Flutter widgets that make it easy to implement the Bloc (Business Logic Component) design pattern.
   flutter_bloc: ^9.1.1
+  #  A flutter plugin for Text to Speech. This plugin is supported on iOS, macOS, Android, Web, & Windows.
+  flutter_tts: ^4.2.5
 
 
 dev_dependencies:
