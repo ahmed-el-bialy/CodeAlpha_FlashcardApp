@@ -34,7 +34,10 @@ class StudyCardsScreen extends StatelessWidget {
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
                 child: FlashCard(cardModel: CardModel(
-                    id: "5", front: "what is that??", back: "Nothing"), isInQuiz: false,),
+                    id: "5",
+                    front: "what is that??",
+                    back: "Nothing",
+                    hint: "wfssgsfsf"), isInQuiz: false,),
               );
             })))
     );
