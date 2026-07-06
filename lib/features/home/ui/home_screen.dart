@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: "Study Cards",
       subtitle: "Review or manage your flashcards",
       onTap: () {
-        context.pushNamed(AppConstants.studyCards, null);
+        context.pushNamed(AppConstants.reviewCardsScreen, null);
       },
     ),
     NavigationModel(

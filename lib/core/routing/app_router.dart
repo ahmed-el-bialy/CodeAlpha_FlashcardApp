@@ -2,6 +2,7 @@ import 'package:code_alpha_flash_card_app/core/data/repo/cards_repo.dart';
 import 'package:code_alpha_flash_card_app/features/add_new_card/logic/add_card_cubit.dart';
 import 'package:code_alpha_flash_card_app/features/add_new_card/ui/add_new_card_screen.dart';
 import 'package:code_alpha_flash_card_app/features/home/ui/home_screen.dart';
+import 'package:code_alpha_flash_card_app/features/quiz/ui/quiz_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,26 +30,23 @@ class AppRouter {
           ),
         );
 
-      case AppConstants.studyCards:
+      case AppConstants.reviewCardsScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              MultiBlocProvider(
-                providers: [
-                  BlocProvider(
-                    create: (context) =>
-                    GetAllCardsCubit(CardsRepo())
-                      ..fetchAllCards(),
-                  ),
-                  BlocProvider(
-                    create: (context) => DeleteCardCubit(CardsRepo()),
-                  ),
-                  BlocProvider(
-                    create: (context) => EditCardCubit(CardsRepo()),
-                  ),
-                ],
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    GetAllCardsCubit(CardsRepo())..fetchAllCards(),
+              ),
+              BlocProvider(create: (context) => DeleteCardCubit(CardsRepo())),
+              BlocProvider(create: (context) => EditCardCubit(CardsRepo())),
+            ],
             child: const ReviewCardsScreen(),
           ),
         );
+
+      case AppConstants.quizScreen:
+        return MaterialPageRoute(builder: (_) => const QuizScreen());
 
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
