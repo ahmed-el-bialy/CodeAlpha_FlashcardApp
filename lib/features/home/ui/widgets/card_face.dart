@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../add_new_card/logic/delete_card/delete_card_cubit.dart';
+import '../../../add_new_card/logic/edit_card/edit_card_cubit.dart';
 import '../../../edit_card_bottom_sheet.dart';
-import '../../logic/get_all_cards_cubit.dart';
 
 class CardFace extends StatelessWidget {
   const CardFace({
@@ -77,7 +78,7 @@ class CardFace extends StatelessWidget {
             left: 8.w,
             child: IconButton(
               onPressed: () {
-                final cubit = context.read<GetAllCardsCubit>();
+                final editCubit = context.read<EditCardCubit>();
 
                 showModalBottomSheet(
                   context: context,
@@ -91,7 +92,7 @@ class CardFace extends StatelessWidget {
                       EditCardBottomSheet(
                         cardModel: cardModel,
                         onCardUpdated: (updatedCard) {
-                          cubit.updateCard(updatedCard);
+                          editCubit.emitUpdateCard(updatedCard);
                         },
                       ),
                 );
@@ -107,7 +108,18 @@ class CardFace extends StatelessWidget {
             top: 8.h,
             right: 8.w,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                final deleteCubit = context.read<DeleteCardCubit>();
+
+                showDialog(
+                  context: context,
+                  builder: (context) =>
+                      ConfirmMessage(
+                        deleteCubit: deleteCubit,
+                        cardModel: cardModel,
+                      ),
+                );
+              },
               icon: Icon(
                 CupertinoIcons.trash_circle_fill,
                 color: Colors.redAccent.withValues(alpha: 0.8),
@@ -117,6 +129,113 @@ class CardFace extends StatelessWidget {
           ),
         ],
       ],
+    );
+  }
+}
+
+class ConfirmMessage extends StatelessWidget {
+  const ConfirmMessage({
+    super.key,
+    required this.deleteCubit,
+    required this.cardModel,
+  });
+
+  final DeleteCardCubit deleteCubit;
+  final CardModel cardModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: AppColors.darkBackground,
+      elevation: 10,
+      insetPadding: EdgeInsets.symmetric(horizontal: 32.w),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24.r),
+      ),
+      child: Container(
+        padding: EdgeInsets.all(20.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              CupertinoIcons.exclamationmark_triangle_fill,
+              color: Colors.redAccent,
+              size: 40.sp,
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              "Delete Card",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 12.h),
+            Text(
+              "Are you sure you want to delete this card?",
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 14.sp,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 24.h),
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 12.h),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.r),
+                        side: BorderSide(color: Colors.grey.withValues(
+                            alpha: 0.5), width: 1),
+                      ),
+                    ),
+                    child: Text(
+                      "Cancel",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 12.w),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      deleteCubit.emitDeleteCard(cardModel.id);
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent.withValues(alpha: 0.2),
+                      foregroundColor: Colors.redAccent,
+                      elevation: 0,
+                      padding: EdgeInsets.symmetric(vertical: 12.h),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.r),
+                        side: const BorderSide(
+                            color: Colors.redAccent, width: 1),
+                      ),
+                    ),
+                    child: Text(
+                      "Delete",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
