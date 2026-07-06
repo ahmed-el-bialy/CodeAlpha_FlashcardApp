@@ -3,5 +3,7 @@ class AppConstants {
 
   static const String newCardScreen = "/AddNewCardScreen";
 
-  static const String studyCards = "/ReviewCards";
+  static const String reviewCardsScreen = "/ReviewCards";
+
+  static const String quizScreen = "/QuizCards";
 }
