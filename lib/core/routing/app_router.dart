@@ -7,9 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/review/ui/logic/delete_card/delete_card_cubit.dart';
 import '../../features/review/ui/logic/edit_card/edit_card_cubit.dart';
-import '../../features/home/logic/get_all_cards_cubit.dart';
 import '../../features/review/ui/review_cards_screen.dart';
 import '../constants/app_constants.dart';
+import '../logic/get_all_cards_cubit.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings setting) {
