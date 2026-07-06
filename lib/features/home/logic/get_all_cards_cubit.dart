@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/models/card_model.dart';
 import '../../add_new_card/data/repo/cards_repo.dart';
 import 'get_all_cards_state.dart';
 
@@ -15,6 +16,15 @@ class GetAllCardsCubit extends Cubit<GetAllCardsState> {
       emit(CardsLoadedSuccess(cards));
     } catch (e) {
       emit(CardsError('there was an Error: ${e.toString()}'));
+    }
+  }
+
+  Future<void> updateCard(CardModel updatedCard) async {
+    try {
+      await _cardsRepo.updateCard(updatedCard);
+      await fetchAllCards();
+    } catch (e) {
+      emit(CardsError('Failed to update card: ${e.toString()}'));
     }
   }
 }

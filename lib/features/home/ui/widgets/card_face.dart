@@ -3,7 +3,11 @@ import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../edit_card_bottom_sheet.dart';
+import '../../logic/get_all_cards_cubit.dart';
 
 class CardFace extends StatelessWidget {
   const CardFace({
@@ -32,9 +36,9 @@ class CardFace extends StatelessWidget {
             border: isFront
                 ? null
                 : Border.all(
-                    color: AppColors.accentCyan.withValues(alpha: 0.5),
-                    width: 1.5,
-                  ),
+              color: AppColors.accentCyan.withValues(alpha: 0.5),
+              width: 1.5,
+            ),
           ),
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
@@ -67,14 +71,30 @@ class CardFace extends StatelessWidget {
             ],
           ),
         ),
-
         if (!isInQuiz) ...[
           Positioned(
             top: 8.h,
             left: 8.w,
             child: IconButton(
               onPressed: () {
-                /// TODO: Edit Card
+                final cubit = context.read<GetAllCardsCubit>();
+
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: AppColors.darkBackground,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(24.r)),
+                  ),
+                  builder: (_) =>
+                      EditCardBottomSheet(
+                        cardModel: cardModel,
+                        onCardUpdated: (updatedCard) {
+                          cubit.updateCard(updatedCard);
+                        },
+                      ),
+                );
               },
               icon: Icon(
                 CupertinoIcons.pencil_circle_fill,
@@ -87,9 +107,7 @@ class CardFace extends StatelessWidget {
             top: 8.h,
             right: 8.w,
             child: IconButton(
-              onPressed: () {
-                /// TODO: Delete Card
-              },
+              onPressed: () {},
               icon: Icon(
                 CupertinoIcons.trash_circle_fill,
                 color: Colors.redAccent.withValues(alpha: 0.8),
@@ -98,21 +116,6 @@ class CardFace extends StatelessWidget {
             ),
           ),
         ],
-
-        Positioned(
-          bottom: 12.h,
-          right: 12.w,
-          child: IconButton(
-            onPressed: () {
-              /// TODO: Speak Card
-            },
-            icon: Icon(
-              CupertinoIcons.speaker_2_fill,
-              color: AppColors.accentCyan.withValues(alpha: 0.6),
-              size: 22.sp,
-            ),
-          ),
-        ),
       ],
     );
   }
