@@ -24,7 +24,7 @@ class RefreshButton extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              backgroundColor: AppColors.indigoAccent.withValues(alpha: 0.2),
+              backgroundColor: AppColors.indigoAccent.withValues(alpha: 0.4),
               duration: const Duration(seconds: 2),
               behavior: SnackBarBehavior.floating,
               shape: RoundedRectangleBorder(

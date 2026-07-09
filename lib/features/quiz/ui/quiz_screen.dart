@@ -1,5 +1,6 @@
 import 'package:code_alpha_flash_card_app/core/theming/app_colors.dart';
 import 'package:code_alpha_flash_card_app/core/theming/app_styles.dart';
+import 'package:code_alpha_flash_card_app/features/quiz/ui/widgets/buttons_row.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,14 +56,13 @@ class _QuizScreenState extends State<QuizScreen> {
       ),
       body: BlocBuilder<GetAllCardsCubit, GetAllCardsState>(
         builder: (context, state) {
-          // 1. حالة التحميل (Loading)
           if (state is CardsLoading) {
             return const Center(
               child: CircularProgressIndicator(color: AppColors.indigoAccent),
             );
           }
 
-          // 2. حالة الخطأ (Error)
+
           if (state is CardsError) {
             return Center(
               child: Text(
@@ -176,59 +176,10 @@ class _QuizScreenState extends State<QuizScreen> {
                     const Spacer(),
 
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
+                    ButtonsRow(currentPage: _currentPage,
+                        pageController: _pageController,
+                        cards: cards),
 
-                        Expanded(
-                          child: ElevatedButton.icon(
-                            onPressed: _currentPage > 0
-                                ? () {
-                              _pageController.previousPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeInOut,
-                              );
-                            }
-                                : null,
-                            icon: const Icon(CupertinoIcons.left_chevron),
-                            label: const Text("Previous"),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.oceanBlue,
-                              foregroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(vertical: 14.h),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(14.r),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16.w),
-
-
-                        Expanded(
-                          child: ElevatedButton.icon(
-                            onPressed: _currentPage < cards.length - 1
-                                ? () {
-                              _pageController.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeInOut,
-                              );
-                            }
-                                : null,
-                            icon: const Icon(CupertinoIcons.right_chevron),
-                            label: const Text("Next"),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.indigoAccent,
-                              foregroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(vertical: 14.h),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(14.r),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                     SizedBox(height: 10.h),
                   ],
                 ),
@@ -242,3 +193,4 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 }
+
