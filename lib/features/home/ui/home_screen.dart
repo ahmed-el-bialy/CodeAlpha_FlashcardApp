@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late final List<NavigationModel> models = [
     NavigationModel(
       imagePath: "assets/images/book.png",
-      title: "Study Cards",
+      title: "Review Cards",
       subtitle: "Review or manage your flashcards",
       onTap: () {
         context.pushNamed(AppConstants.reviewCardsScreen, null);
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: "Quiz Yourself",
       subtitle: "Test your knowledge",
       onTap: () {
-        /// TODO: Navigate to Quiz Screen
+        context.pushNamed(AppConstants.quizScreen, null);
       },
     ),
   ];

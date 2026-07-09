@@ -8,10 +8,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/logic/get_all_cards_cubit.dart';
 import '../../../core/logic/get_all_cards_state.dart';
-import 'logic/delete_card/delete_card_cubit.dart';
-import 'logic/delete_card/delete_card_state.dart';
-import 'logic/edit_card/edit_card_cubit.dart';
-import 'logic/edit_card/edit_card_state.dart';
+import '../logic/delete_card/delete_card_cubit.dart';
+import '../logic/delete_card/delete_card_state.dart';
+import '../logic/edit_card/edit_card_cubit.dart';
+import '../logic/edit_card/edit_card_state.dart';
 
 class ReviewCardsScreen extends StatelessWidget {
   const ReviewCardsScreen({super.key});
@@ -24,7 +24,7 @@ class ReviewCardsScreen extends StatelessWidget {
         elevation: 1,
         backgroundColor: Colors.transparent,
         title: Text(
-          "Study Cards",
+          "Review Cards",
           style: AppStyles.font24BoldIndigoAccentManrope.copyWith(
             fontSize: 19.sp,
           ),
