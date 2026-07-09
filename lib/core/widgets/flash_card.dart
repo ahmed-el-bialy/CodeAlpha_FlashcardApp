@@ -9,11 +9,13 @@ import 'card_face.dart';
 class FlashCard extends StatelessWidget {
   final CardModel cardModel;
   final bool isInQuiz;
+  final bool showHint;
 
   const FlashCard({
     super.key,
     required this.cardModel,
     required this.isInQuiz,
+    this.showHint = false,
   });
 
   @override
@@ -30,12 +32,14 @@ class FlashCard extends StatelessWidget {
         cardModel: cardModel,
         isInQuiz: isInQuiz,
         isFront: true,
+        showHint: showHint,
       ),
       back: CardFace(
         cardHeight: cardHeight,
         cardModel: cardModel,
         isInQuiz: isInQuiz,
         isFront: false,
+        showHint: showHint,
       ),
     );
   }
