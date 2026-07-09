@@ -6,8 +6,8 @@ import 'package:code_alpha_flash_card_app/features/quiz/ui/quiz_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/review/ui/logic/delete_card/delete_card_cubit.dart';
-import '../../features/review/ui/logic/edit_card/edit_card_cubit.dart';
+import '../../features/review/logic/delete_card/delete_card_cubit.dart';
+import '../../features/review/logic/edit_card/edit_card_cubit.dart';
 import '../../features/review/ui/review_cards_screen.dart';
 import '../constants/app_constants.dart';
 import '../logic/get_all_cards_cubit.dart';
@@ -46,7 +46,12 @@ class AppRouter {
         );
 
       case AppConstants.quizScreen:
-        return MaterialPageRoute(builder: (_) => const QuizScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => GetAllCardsCubit(CardsRepo())..fetchAllCards(),
+            child: const QuizScreen(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
