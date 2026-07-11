@@ -7,7 +7,7 @@ import 'core/data/models/card_model.dart';
 import 'core/routing/app_router.dart';
 import 'hive_registrar.g.dart';
 
-void main() async {
+Future<void> main()  async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
