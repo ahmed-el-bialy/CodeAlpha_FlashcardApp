@@ -29,7 +29,23 @@
 
 </div>
 
+
 ---
+
+<div align="center">
+
+## 🎬 Demo Video
+
+### 📱 Watch Sky-Cast in Action
+
+**[▶️ Watch on YouTube Shorts](https://youtube.com/shorts/qTUR-8kLBWY?si=-91YHm7vhqY5jisE)**
+
+
+</div>
+
+---
+
+
 
 <div align="center">
 
