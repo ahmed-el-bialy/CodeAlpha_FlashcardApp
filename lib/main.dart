@@ -1,3 +1,4 @@
+import 'package:code_alpha_flash_card_app/core/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_ce_flutter/hive_ce_flutter.dart';
@@ -32,7 +33,7 @@ class Revio extends StatelessWidget {
       ensureScreenSize: true,
       builder: (_, child) {
         return MaterialApp(
-          initialRoute: '/',
+          initialRoute: AppConstants.homeScreen,
           onGenerateRoute: appRouter.generateRoute,
           debugShowCheckedModeBanner: false,
         );
