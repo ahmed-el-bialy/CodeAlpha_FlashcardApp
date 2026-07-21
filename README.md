@@ -450,8 +450,8 @@ flutter pub get
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ahmed-el-bialy/CodeAlpha_FlashcardApp.git
-cd CodeAlpha_FlashcardApp
+git clone https://github.com/ahmed-el-bialy/Revio.git
+cd Revio
 
 # 2. Install dependencies
 flutter pub get
